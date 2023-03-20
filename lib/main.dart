@@ -1,3 +1,4 @@
+import 'package:bloc_architecture/login_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,24 +14,26 @@ class MyApp extends StatelessWidget {
       title: 'BLoc Architecture',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.blue,
+        // useMaterial3: true,
+        /*colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.red
+        ),*/
       ),
-      home: const MyHomePage(title: 'BLoc Architecture home page'),
+      home: LoginView(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+/*class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
-}
+}*/
 
-class _MyHomePageState extends State<MyHomePage> {
+/*class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -85,4 +88,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/
