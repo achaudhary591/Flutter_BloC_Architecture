@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 
-import 'counter_bloc.dart';
-import 'counter_event.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,19 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _bloc = CounterBloc();
-
-  /*int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;/*int _counter = 0;
+  int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -58,9 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter--;
     });
-  }*/
-    });
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,30 +53,24 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: StreamBuilder(
-          stream: _bloc.counter,
-          initialData: 0,
-          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '${snapshot.data}',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ],
-            );
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
         ),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () => _bloc.counterEventSink.add(IncrementEvent()),
+            onPressed: _incrementCounter,
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
@@ -100,19 +78,12 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 10,
           ),
           FloatingActionButton(
-            onPressed: () => _bloc.counterEventSink.add(DecrementEvent()),
+            onPressed: _decrementCounter,
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _bloc.dispose();
   }
 }
